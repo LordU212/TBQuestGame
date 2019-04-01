@@ -1,0 +1,38 @@
+﻿<Window x:Class="TBQuestGame.PresentationLayer.PlayerSetupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TBQuestGame.PresentationLayer"
+        mc:Ignorable="d"
+        Title="Player Setup" Height="450" Width="800" Background="Black">
+    <Window.Resources>
+        <Style x:Key="MainPanelLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Lucida Console"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="MasterTextboxStyle" TargetType="TextBox">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Name="ErrorMessage" Text="There was an error with your inputs. Please make sure everything is correct." Foreground="White" HorizontalAlignment="Center" Margin="20, 80, 0, 0"/>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" Height="150">
+            <Label Content="Player Name:" Style="{StaticResource MainPanelLabelStyle}"/>
+            <Label Content="Player Class:" Style="{StaticResource MainPanelLabelStyle}"/>
+            <Label Content="" Width="100" Margin="10" HorizontalAlignment="Right"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="150" Width="200">
+            <TextBox Name="NameTextBox" Width="120" Foreground="Black" HorizontalAlignment="Center" Style="{StaticResource MasterTextboxStyle}"/>
+            <ComboBox SelectedItem="Warrior" Name="PlayerClassCombo" Width="120" Margin="10, 10, 10, 10" Foreground="Black" HorizontalAlignment="Center"/>
+            <Button x:Name="SaveButton" Content="Save" Width="100" Click="SaveButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

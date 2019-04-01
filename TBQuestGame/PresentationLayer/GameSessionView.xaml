@@ -1,0 +1,98 @@
+﻿<Window x:Class="TBQuestGame.PresentationLayer.GameSessionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TBQuestGame.PresentationLayer"
+        mc:Ignorable="d"
+        Title="Text Souls" Height="576" Width="1024" Background="Black">
+    <Window.Resources>
+        <Style x:Key="MainPanelLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Lucida Console"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style x:Key="MasterTextblockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.25*"/>
+            <ColumnDefinition Width="1.35*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.35*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Label Height="18" Content="Player Health Bar" Style="{StaticResource MainPanelLabelStyle}" VerticalAlignment="Top" FontSize="10" BorderBrush="White" BorderThickness="1"/>
+            <Image Source="asylum.png"/>
+            <Label Height="18" Content="Enemy Health Bar" Style="{StaticResource MainPanelLabelStyle}" VerticalAlignment="Bottom" FontSize="10" BorderBrush="White" BorderThickness="1" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource MasterTextblockStyle}" Height="150" Margin="10, 10, 10, 0" Text="{Binding CurrentLocation.Description}" />
+            <StackPanel>
+                <Button Content="{Binding WestLocation.Name, Mode=OneWay}"  Click="WestTravelButton_Click" Height="20" Width="250" Margin="5"/>
+                <Button Content="{Binding NorthLocation.Name, Mode=OneWay}" Click="NorthTravelButton_Click" Height="20" Width="250" Margin="5"/>
+                <Button Content="{Binding EastLocation.Name, Mode=OneWay}" Click="EastTravelButton_Click" Height="20" Width="250" Margin="5"/>
+
+                <Button Content="{Binding SouthLocation.Name, Mode=OneWay}" Click="SouthTravelButton_Click" Height="20" Width="250" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+             <Label Content="Player Stats" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Name" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Level" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Souls" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Max Health" Style="{StaticResource MainPanelLabelStyle}"/>
+                
+                <Label Content="Strength" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Dexterity" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Intelligence" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Faith" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="Estus Flasks" Style="{StaticResource MainPanelLabelStyle}"/>
+                
+            </StackPanel>
+            <StackPanel  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Label Content="" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Name}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.PlayerLevel}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Souls}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Health}" Style="{StaticResource MainPanelLabelStyle}"/>
+                
+                <Label Content="{Binding Player.Strength}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Dexterity}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Intelligence}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Faith}" Style="{StaticResource MainPanelLabelStyle}"/>
+                <Label Content="{Binding Player.Estus}" Style="{StaticResource MainPanelLabelStyle}"/>
+                
+            </StackPanel>
+
+        </Grid>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Label Style="{StaticResource MainPanelLabelStyle}" Content="Main Menu"  HorizontalContentAlignment="Center" BorderBrush="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MainPanelLabelStyle}" Content="Look Around"/>
+            <Label Style="{StaticResource MainPanelLabelStyle}" Content=""/>
+            <Label Style="{StaticResource MainPanelLabelStyle}" Content="Character Equipment"/>
+            <Label Style="{StaticResource MainPanelLabelStyle}" Content="Search For Items"/>
+            <Label Style="{StaticResource MainPanelLabelStyle}" Content="Inventory"/>
+            <Button Width="50" x:Name="ExitButton" Content="Exit" Click="ExitButton_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
+            <TextBlock Style="{StaticResource MasterTextblockStyle}" Text="{Binding CurrentLocation.Name}" Width="300" Foreground="WhiteSmoke" Background="Black" FontSize="16" HorizontalAlignment="Center"/>
+            <TextBlock Style="{StaticResource MasterTextblockStyle}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="20, 20, 20, 20" Padding="5">
+                <Run Text="{Binding MessageDisplay, Mode=OneWay}"/>
+                
+        </TextBlock>
+        </StackPanel>
+        
+    </Grid>
+</Window>
